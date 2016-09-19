@@ -1,0 +1,10 @@
+name: Spinner
+main: com.btbb.spinner.SpinnerPlugin
+version: 1.0
+author: Serge Humphrey
+description: Loads & Updates Marked Chunks
+
+commands:
+  spinner:
+    description: Spinner chunk loader.
+    aliases: [sr]
