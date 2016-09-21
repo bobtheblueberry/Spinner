@@ -73,7 +73,6 @@ public class ChunkUtils implements Runnable {
 		public boolean alwaysLoaded;
 		public String activeGroup = "default";
 		public boolean following;
-		public int movement;
 
 		private int maxChunks = -1;
 
