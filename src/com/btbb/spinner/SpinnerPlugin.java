@@ -24,6 +24,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
 
 import com.btbb.spinner.db.BinaryDB;
 
@@ -35,6 +36,13 @@ public class SpinnerPlugin extends JavaPlugin {
 	SpinnerPlayerFollower follower;
 
 	public void onEnable() {
+
+		try {
+			Metrics m = new Metrics(this);
+			m.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		plugin = this;
 		database = new BinaryDB(this);
 		utils = new ChunkUtils(this);
