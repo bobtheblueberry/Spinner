@@ -32,6 +32,7 @@ public class SpinnerPlugin extends JavaPlugin {
 	BinaryDB database;
 	public ChunkUtils utils;
 	public static SpinnerPlugin plugin;
+	SpinnerPlayerFollower follower;
 
 	public void onEnable() {
 		plugin = this;
@@ -40,8 +41,9 @@ public class SpinnerPlugin extends JavaPlugin {
 		if (!getDataFolder().exists())
 			getDataFolder().mkdirs();
 		getCommand("spinner").setExecutor(new SpinnerCommands(this));
-		getServer().getPluginManager().registerEvents(new SpinnerListener(this, utils), this);
+		getServer().getPluginManager().registerEvents(new ChunkListener(this), this);
 		invokeLoad();
+		invokePlayerFollower();
 		utils.enable();
 	}
 
@@ -62,6 +64,13 @@ public class SpinnerPlugin extends JavaPlugin {
 				}
 			}
 		});
+	}
+
+	public void invokePlayerFollower() {
+		if (follower != null)
+			follower.cancel();
+		follower = new SpinnerPlayerFollower(this);
+		follower.runTaskTimer(this, 200, 100);
 	}
 
 	public void invokeSave() {
