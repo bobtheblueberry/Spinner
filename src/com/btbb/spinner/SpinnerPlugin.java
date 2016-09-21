@@ -70,7 +70,7 @@ public class SpinnerPlugin extends JavaPlugin {
 		if (follower != null)
 			follower.cancel();
 		follower = new SpinnerPlayerFollower(this);
-		follower.runTaskTimer(this, 200, 100);
+		follower.runTaskTimer(this, 200, 30);
 	}
 
 	public void invokeSave() {
